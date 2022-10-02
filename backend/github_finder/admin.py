@@ -1,3 +1,7 @@
+from re import U
 from django.contrib import admin
+from .models import UserName
+from .models import Repository
 
-# Register your models here.
+admin.site.register(UserName)
+admin.site.register(Repository)
