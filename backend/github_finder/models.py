@@ -2,17 +2,17 @@ from unittest.mock import create_autospec
 from django.db import models
 
 
-class UserName(models.Model):
-    username = models.CharField(max_length=240)
+class Profile(models.Model):
+    profile = models.CharField(max_length=240)
     create_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.username
+        return self.profile
 
 
 class Repository(models.Model):
-    repo_name = models.CharField(max_length=240)
-    username = models.ForeignKey(UserName, on_delete=models.CASCADE)
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    repository = models.CharField(max_length=240)
 
     def __str__(self):
-        return {self.username: self.repo_name}
+        return {self.profile: self.repository}

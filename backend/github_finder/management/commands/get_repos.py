@@ -2,7 +2,7 @@ import imp
 from urllib import request
 from django.core.management.base import BaseCommand
 import requests
-from github_finder.models import UserName, Repository
+from github_finder.models import Profile, Repository
 
 
 class Command(BaseCommand):
@@ -19,9 +19,9 @@ class Command(BaseCommand):
         repo_response = requests.get(
             f"https://api.github.com/users/{username}/repos").json()
 
-        new_user = UserName(username=username)
+        new_user = Profile(profile=username)
         new_user.save()
         # TODO: optimization on save multiple entries
         for repo in repo_response:
-            new_repo = Repository(repo_name=repo["name"], username=new_user)
+            new_repo = Repository(repository=repo["name"], profile=new_user)
             new_repo.save()
