@@ -42,7 +42,7 @@ function SearchUser(props) {
 				</Button>
 
 				{props.showClear && (
-					<Button onClick={handleClear} variant="warning" className="mx-2">
+					<Button onClick={handleClear} variant="info" className="mx-2">
 						Clear
 					</Button>
 				)}

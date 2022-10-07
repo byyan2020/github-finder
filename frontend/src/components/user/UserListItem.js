@@ -6,10 +6,10 @@ export default function UserListItem({ user }) {
 	return (
 		<Card className="my-3 p-3 rounded">
 			<Link to={`/${user.login}`}>
-				<Card.Img src={user.avatar_url} variant="top" />
+				<Card.Img src={user.avatar_url} variant="top" fluid />
 			</Link>
 			<Card.Body>
-				<Card.Title as="h4">
+				<Card.Title as="h5">
 					<strong>{user.login}</strong>
 				</Card.Title>
 				<Link to={`/${user.login}`}>

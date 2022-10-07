@@ -13,6 +13,7 @@ function Users() {
 				const response = await fetch(`https://api.github.com/search/users?q=${state.query}`);
 				const users = await response.json();
 				setState({ ...state, users: users.items, loading: false });
+				console.log(users.items);
 			}
 		};
 		fetchUser();

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Button, Container, Col, Row, Badge, ListGroup, Image, Card } from "react-bootstrap";
-import { Icon } from "semantic-ui-react";
 
 function UserDetails(props) {
 	const [state, setState] = useState({
@@ -11,7 +10,6 @@ function UserDetails(props) {
 	});
 
 	const { uid } = useParams();
-	console.log(uid);
 	useEffect(() => {
 		const getUser = async () => {
 			// const client_id = "7dc85f132fdf952c520c";
@@ -42,52 +40,62 @@ function UserDetails(props) {
 
 			<Container>
 				<Card>
-					<Row>
-						<Col className="md-3">
-							<Image class="w-25 p-3" src={state.profile.avatar_url} roundedCircle />
-							<h4>{state.profile.login}</h4>
-							<Button href={state.profile.html_url} type="submit" variant="primary" className="p-2">
-								Visit Github Profile
-							</Button>
-						</Col>
+					<Card.Body>
+						<Row>
+							<Col md={3}>
+								<Image className="img-fluid md-2" src={state.profile.avatar_url} />
+								<h4 className="my-2">{state.profile.login}</h4>
+								<div class="d-grid gap-2 align-items-center">
+									<Button
+										href={state.profile.html_url}
+										type="submit"
+										variant="info"
+										className="p-2"
+									>
+										Visit Github Profile
+									</Button>
+								</div>
+							</Col>
 
-						<Col className="md-3">
-							<Badge bg="danger">
-								<Icon name="users" />
-								Followers: {state.profile.followers}
-							</Badge>
-							<Badge bg="success">
-								<Icon name="user plus" />
-								Following: {state.profile.following}
-							</Badge>
-							<Badge bg="info">
-								<Icon name="github" />
-								Public Repos: {state.profile.public_repos}
-							</Badge>
-							<Badge bg="primary">
-								<Icon name="github alternate" />
-								Public Gists: {state.profile.public_gists}
-							</Badge>
+							<Col md={9}>
+								<div className="my-3">
+									<Badge bg="danger">Followers: {state.profile.followers}</Badge>
+									<Badge bg="success">Following: {state.profile.following}</Badge>
+									<Badge bg="info">Public Repos: {state.profile.public_repos}</Badge>
+									<Badge bg="primary">Public Gists: {state.profile.public_gists}</Badge>
+								</div>
 
-							<ListGroup>
-								<ListGroup.Item>Username: {state.profile.login}</ListGroup.Item>
-								<ListGroup.Item>Company: {state.profile.company}</ListGroup.Item>
-								<ListGroup.Item>Location: {state.profile.Location}</ListGroup.Item>
-							</ListGroup>
-						</Col>
-					</Row>
+								<ListGroup>
+									<ListGroup.Item>Username: {state.profile.login}</ListGroup.Item>
+									<ListGroup.Item>Company: {state.profile.company}</ListGroup.Item>
+									<ListGroup.Item>Location: {state.profile.location}</ListGroup.Item>
+								</ListGroup>
+							</Col>
+						</Row>
+					</Card.Body>
 				</Card>
 
-				<ListGroup variant="flush">
-					{state.repository &&
-						state.repository.map((repo, i) => (
-							<ListGroup.Item as="h2" key={i}>
-								<a href={repo.html_url} target="_blank" rel="noopener noreferrer">
-									{repo.name}
-								</a>
-							</ListGroup.Item>
-						))}
-				</ListGroup>
+				<h3 className="m-3">Repositries</h3>
+
+				<Card>
+					<ListGroup variant="flush">
+						{state.repository &&
+							state.repository.map((repo, i) => (
+								<ListGroup.Item key={i}>
+									<div className="d-flex justify-content-between align-items-baseline">
+										<a href={repo.html_url} target="_blank" rel="noopener noreferrer">
+											<h5>{repo.name}</h5>
+										</a>
+										<div>
+											<Badge bg="danger">Stars: {repo.public_repos}</Badge>
+											<Badge bg="success">Watchers: {repo.watchers_count}</Badge>
+											<Badge bg="info">Forks: {repo.forks_count}</Badge>
+										</div>
+									</div>
+								</ListGroup.Item>
+							))}
+					</ListGroup>
+				</Card>
 			</Container>
 		</React.Fragment>
 	);
