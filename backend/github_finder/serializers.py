@@ -7,7 +7,8 @@ from .models import Profile, Repository
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
-        fields = ('profile', 'id')
+        fields = ('login', 'id', 'avatar_url', 'html_url', 'followers', 'following',
+                  'public_repos', 'public_gists', 'company', 'location', 'create_at')
 
 
 class RepositorySerializer(serializers.ModelSerializer):
@@ -15,4 +16,5 @@ class RepositorySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Repository
-        fields = ('profile', 'repository', 'id')
+        fields = ('profile', 'html_url', 'name', 'stargazers_count',
+                  'id', 'watchers_count', 'forks_count')

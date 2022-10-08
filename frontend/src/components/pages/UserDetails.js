@@ -87,7 +87,7 @@ function UserDetails(props) {
 											<h5>{repo.name}</h5>
 										</a>
 										<div>
-											<Badge bg="danger">Stars: {repo.public_repos}</Badge>
+											<Badge bg="danger">Stars: {repo.stargazers_count}</Badge>
 											<Badge bg="success">Watchers: {repo.watchers_count}</Badge>
 											<Badge bg="info">Forks: {repo.forks_count}</Badge>
 										</div>

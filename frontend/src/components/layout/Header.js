@@ -8,7 +8,7 @@ function Header() {
 			<Navbar bg="dark" variant="dark" expand="lg">
 				<Container>
 					<LinkContainer to="/">
-						<Navbar.Brand>GithubFinder</Navbar.Brand>
+						<Navbar.Brand>Github Finder</Navbar.Brand>
 					</LinkContainer>
 					<Navbar.Toggle aria-controls="basic-navbar-nav" />
 					<Navbar.Collapse id="basic-navbar-nav">
