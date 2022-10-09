@@ -2,20 +2,18 @@ import React, { useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
 import SearchUser from "./SearchUser";
 import UserList from "./UserList";
+import axios from "axios";
 
 function Users() {
 	const [state, setState] = useState({ users: [], loading: false, query: "" });
 
+	const fetchUser = async () => {
+		const response = await axios.get(`api/profiles/`);
+		const users = response.data;
+		setState({ ...state, users: users, loading: false });
+	};
+
 	useEffect(() => {
-		const fetchUser = async () => {
-			if (state.query) {
-				setState({ ...state, loading: true });
-				const response = await fetch(`https://api.github.com/search/users?q=${state.query}`);
-				const users = await response.json();
-				setState({ ...state, users: users.items, loading: false });
-				console.log(users.items);
-			}
-		};
 		fetchUser();
 		//eslint-disable-next-line
 	}, [state.query]);
@@ -25,18 +23,13 @@ function Users() {
 	};
 
 	const handleClear = (e) => {
-		setState({ ...state, users: [] });
+		fetchUser();
 	};
 
 	return (
 		<React.Fragment>
 			<Container>
-				<SearchUser
-					onSearch={handleSearch}
-					onClear={handleClear}
-					showClear={state.users.length > 1}
-				/>
-				{/* <Loader active={state.loading} /> */}
+				<SearchUser onSearch={handleSearch} onClear={handleClear} showClear={state.query !== ""} />
 				<UserList users={state.users} />
 			</Container>
 		</React.Fragment>

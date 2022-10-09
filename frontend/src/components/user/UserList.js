@@ -9,7 +9,7 @@ export default function UserList({ users }) {
 				{users &&
 					users.map((item, i) => {
 						return (
-							<Col key={i} sm={12} md={6} lg={4} xl={3}>
+							<Col className="d-flex align-items-stretch" key={i} sm={12} md={6} lg={4} xl={3}>
 								<UserListItem user={item} />
 							</Col>
 						);

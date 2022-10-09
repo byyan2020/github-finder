@@ -16,5 +16,5 @@ class RepositorySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Repository
-        fields = ('profile', 'html_url', 'name', 'stargazers_count',
+        fields = ('html_url', 'name', 'stargazers_count',
                   'id', 'watchers_count', 'forks_count')

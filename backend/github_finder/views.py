@@ -7,16 +7,15 @@ from .serializers import ProfileSerializer, RepositorySerializer
 from .models import Profile, Repository
 
 
-class ProfileView(viewsets.ModelViewSet):
+class ProfileViewSet(viewsets.ModelViewSet):
     serializer_class = ProfileSerializer
     queryset = Profile.objects.all()
 
-    def retrieve(self, request, pk=None):
-        queryset = Profile.objects.get(id=pk)
+    @action(methods=['get'], detail=True)
+    def repos(self, request, pk=None):
+        queryset = Profile.objects.get(pk=pk)
         serializer = ProfileSerializer(queryset)
-        ret = dict(serializer.data)
-        repository = Repository.objects.filter(profile=ret["id"])
+
+        repository = Repository.objects.filter(profile=serializer.data["id"])
         repository_serializer = RepositorySerializer(repository, many=True)
-        # ret["repository"] = dict(repository_serializer.data)
-        # print(repository_serializer.data)
         return Response(repository_serializer.data)

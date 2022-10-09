@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Button, Container, Col, Row, Badge, ListGroup, Image, Card } from "react-bootstrap";
+import axios from "axios";
 
 function UserDetails(props) {
 	const [state, setState] = useState({
@@ -12,18 +13,11 @@ function UserDetails(props) {
 	const { uid } = useParams();
 	useEffect(() => {
 		const getUser = async () => {
-			// const client_id = "7dc85f132fdf952c520c";
-			// const client_secret = "1e00fea8f25f3f35d582917dd4d12555a1baa6f1";
 			setState({ ...state, loading: true });
-			const profileResponse = await fetch(
-				`https://api.github.com/users/${uid}` //?client_id=${client_id}&client_secret=${client_secret}
-			);
-
-			const repoResponse = await fetch(
-				`https://api.github.com/users/${uid}/repos` //?per_page=5&sort=asc&client_id=${client_id}&client_secret=${client_secret}
-			);
-			const profile = await profileResponse.json();
-			const repos = await repoResponse.json();
+			const profileResponse = await axios.get(`api/profiles/${uid}`);
+			const repoResponse = await axios.get(`api/profiles/${uid}/repos`);
+			const profile = profileResponse.data;
+			const repos = repoResponse.data;
 
 			setState({ profile: profile, repository: repos, loading: false });
 		};
@@ -77,7 +71,7 @@ function UserDetails(props) {
 
 				<h3 className="m-3">Repositries</h3>
 
-				<Card>
+				<Card className="mb-3">
 					<ListGroup variant="flush">
 						{state.repository &&
 							state.repository.map((repo, i) => (

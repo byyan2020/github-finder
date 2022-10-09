@@ -5,16 +5,16 @@ import { Card, Button } from "react-bootstrap";
 export default function UserListItem({ user }) {
 	return (
 		<Card className="my-3 p-3 rounded">
-			<Link to={`/${user.login}`}>
+			<Link to={`/${user.id}`}>
 				<Card.Img src={user.avatar_url} variant="top" fluid />
 			</Link>
-			<Card.Body>
+			<Card.Body className="d-flex flex-column justify-content-between">
 				<Card.Title as="h5">
 					<strong>{user.login}</strong>
 				</Card.Title>
-				<Link to={`/${user.login}`}>
-					<div className="d-grid gap-2">
-						<Button type="submit" variant="primary" className="p-2">
+				<Link to={`/${user.id}`}>
+					<div className="d-grid gap-2 mb-auto">
+						<Button type="submit" variant="primary" className="p-2 ">
 							More
 						</Button>
 					</div>
