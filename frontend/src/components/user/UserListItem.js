@@ -8,7 +8,7 @@ export default function UserListItem({ user }) {
 			<Link to={`/${user.id}`}>
 				<Card.Img src={user.avatar_url} variant="top" fluid />
 			</Link>
-			<Card.Body className="d-flex flex-column justify-content-between">
+			<Card.Body>
 				<Card.Title as="h5">
 					<strong>{user.login}</strong>
 				</Card.Title>

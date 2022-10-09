@@ -16,12 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
-from github_finder.views import ProfileViewSet
+from github_finder.views import ProfileViewSet, SearchViewSet
 
 
 router = routers.DefaultRouter()
 router.register(r'api/profiles', ProfileViewSet,
                 basename='profiles')
+router.register(r'api/search', SearchViewSet,
+                basename='search')
 
 
 urlpatterns = [

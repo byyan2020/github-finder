@@ -37,9 +37,10 @@ function UserDetails(props) {
 					<Card.Body>
 						<Row>
 							<Col md={3}>
-								<Image className="img-fluid md-2" src={state.profile.avatar_url} />
-								<h4 className="my-2">{state.profile.login}</h4>
-								<div class="d-grid gap-2 align-items-center">
+								<div className="d-grid gap-2 align-items-center">
+									<Image className="img-fluid md-2" src={state.profile.avatar_url} />
+									<h4 className="my-2 mx-auto">{state.profile.login}</h4>
+
 									<Button
 										href={state.profile.html_url}
 										type="submit"

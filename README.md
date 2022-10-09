@@ -1,6 +1,5 @@
 # Github Finder
 
-
 ## About
 
 A database contains github users and repositorise.
@@ -20,10 +19,13 @@ python3 -m venv my_env
 Then, activate it:
 
 Mac:
+
 ```bash
 source my_env/bin/activate
 ```
+
 Windows:
+
 ```bash
 .my_env/scripts/activate
 ```
@@ -62,19 +64,20 @@ npm start
 ## API
 
 #### /profiles
-* `GET` : Get all profiles
-* `POST` : Create a new profile
+
+- `GET` : Get all profiles
+- `POST` : Create a new profile
 
 #### /profiles/:id
-* `GET` : Get a profile, show all repositorise
-* `PUT` : Update a profile
-* `DELETE` : Delete a profile
 
-
+- `GET` : Get a profile, show all repositorise
+- `PUT` : Update a profile
+- `DELETE` : Delete a profile
 
 ## Features Catalogue
 
 ### Frontend
+
 - `react` for building interactive UIs
 - `react-dom` for rendering the UI
 - `react-router` for page navigation
@@ -93,6 +96,6 @@ npm start
   - `redux-thunk` for interacting with the Redux store through asynchronous logic
 
 ### Backend
+
 - `django` for building backend logic using Python
 - `djangorestframework` for building a REST API on top of Django
-

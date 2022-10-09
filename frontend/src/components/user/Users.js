@@ -8,9 +8,15 @@ function Users() {
 	const [state, setState] = useState({ users: [], loading: false, query: "" });
 
 	const fetchUser = async () => {
-		const response = await axios.get(`api/profiles/`);
-		const users = response.data;
-		setState({ ...state, users: users, loading: false });
+		if (state.query) {
+			const response = await axios.get(`api/search?q=${state.query}`);
+			const users = response.data;
+			setState({ ...state, users: users, loading: false });
+		} else {
+			const response = await axios.get(`api/profiles/`);
+			const users = response.data;
+			setState({ ...state, users: users, loading: false });
+		}
 	};
 
 	useEffect(() => {
@@ -23,7 +29,7 @@ function Users() {
 	};
 
 	const handleClear = (e) => {
-		fetchUser();
+		setState({ ...state, query: "" });
 	};
 
 	return (
