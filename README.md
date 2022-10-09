@@ -50,7 +50,7 @@ python manage.py runserver
 
 That's it!
 
-Access the address http://localhost:8000/api/profiles/ and check if the API is up.
+Access the address http://localhost:8000/ and check if the API is up.
 
 ### Running the React project
 
@@ -66,13 +66,14 @@ npm start
 #### /profiles
 
 - `GET` : Get all profiles
-- `POST` : Create a new profile
 
 #### /profiles/:id
 
-- `GET` : Get a profile, show all repositorise
-- `PUT` : Update a profile
-- `DELETE` : Delete a profile
+- `GET` : Get a profile
+
+#### /search/?q=params
+
+- `GET` : search for profile name
 
 ## Features Catalogue
 
@@ -81,19 +82,11 @@ npm start
 - `react` for building interactive UIs
 - `react-dom` for rendering the UI
 - `react-router` for page navigation
-- `webpack` for bundling static assets
 - Styling
   - `bootstrap` for providing responsive stylesheets
   - `react-bootstrap` for providing components built on top of Bootstrap CSS without using plugins
 - State management and backend integration
   - `axios` for performing asynchronous calls
-  - `cookie` for easy integration with Django using the `csrftoken` cookie
-  - `redux` for easy state management across the application
-  - `connected-react-router` for integrating Redux with React Router
-  - `history` for providing browser history to Connected React Router
-  - `react-redux` for integrating React with Redux
-  - `redux-devtools-extension` for inspecting and debugging Redux via browser
-  - `redux-thunk` for interacting with the Redux store through asynchronous logic
 
 ### Backend
 
