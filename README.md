@@ -88,6 +88,10 @@ Enter the user name in the command line and the script will scrape the user info
 
 - `GET` : Get a profile by id
 
+#### /profiles/:id/repos
+
+- `GET` : Get repos of the profile
+
 #### /search/?q=params
 
 - `GET` : search for profile name
