@@ -6,7 +6,7 @@ export default function UserListItem({ user }) {
 	return (
 		<Card className="my-3 p-3 rounded">
 			<Link to={`/${user.id}`}>
-				<Card.Img src={user.avatar_url} variant="top" fluid />
+				<Card.Img src={user.avatar_url} />
 			</Link>
 			<Card.Body>
 				<Card.Title as="h5">
@@ -20,8 +20,6 @@ export default function UserListItem({ user }) {
 					</div>
 				</Link>
 			</Card.Body>
-
-			{/* <Button secondary content="More" as={Link} to={`/${user.login}`} /> */}
 		</Card>
 	);
 }

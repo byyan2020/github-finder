@@ -1,5 +1,5 @@
 import React from "react";
-import { Container } from "semantic-ui-react";
+import { Container } from "react-bootstrap";
 import { Routes, Route } from "react-router-dom";
 import Users from "./components/user/Users";
 import UserDetails from "./components/pages/UserDetails";

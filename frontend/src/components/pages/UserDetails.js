@@ -7,19 +7,17 @@ function UserDetails(props) {
 	const [state, setState] = useState({
 		profile: {},
 		repository: [],
-		loading: true,
 	});
 
 	const { uid } = useParams();
 	useEffect(() => {
 		const getUser = async () => {
-			setState({ ...state, loading: true });
 			const profileResponse = await axios.get(`api/profiles/${uid}`);
 			const repoResponse = await axios.get(`api/profiles/${uid}/repos`);
 			const profile = profileResponse.data;
 			const repos = repoResponse.data;
 
-			setState({ profile: profile, repository: repos, loading: false });
+			setState({ profile: profile, repository: repos });
 		};
 		getUser();
 

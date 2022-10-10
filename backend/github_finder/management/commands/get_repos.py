@@ -46,3 +46,4 @@ class Command(BaseCommand):
             )
             repos.append(new_repo)
         Repository.objects.bulk_create(repos)
+        print("Add user success!")
