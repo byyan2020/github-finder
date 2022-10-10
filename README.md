@@ -5,8 +5,8 @@
 A database contains github users and repositorise.
 
 ## Pages
-![avatar](/img1.png)
-![avatar](/img2.png)
+![avatar](img1.PNG)
+![avatar](img2.PNG)
 
 ## Running
 
