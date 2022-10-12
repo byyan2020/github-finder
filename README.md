@@ -118,3 +118,4 @@ Enter the user name in the command line and the script will scrape the user info
 
 ## Features To Be Implemented
   - admin page allows to add new github users, update user information and delete users
+  - pagination for user list and repository list
