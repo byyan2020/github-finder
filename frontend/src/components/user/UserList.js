@@ -7,10 +7,10 @@ export default function UserList({ users }) {
 		<Container>
 			<Row>
 				{users.length > 0 ? (
-					users.map((item, i) => {
+					users.map((user, i) => {
 						return (
 							<Col key={i} sm={12} md={6} lg={4} xl={3}>
-								<UserListItem user={item} />
+								<UserListItem user={user} />
 							</Col>
 						);
 					})

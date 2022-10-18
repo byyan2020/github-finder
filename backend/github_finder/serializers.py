@@ -12,7 +12,6 @@ class ProfileSerializer(serializers.ModelSerializer):
 
 
 class RepositorySerializer(serializers.ModelSerializer):
-    # profile = serializers.HyperlinkedIdentityField()
 
     class Meta:
         model = Repository

@@ -4,23 +4,27 @@ import { Button, Container, Col, Row, Badge, ListGroup, Image, Card } from "reac
 import axios from "axios";
 
 function UserDetails(props) {
+	// TODO Add a loading spinner
 	const [state, setState] = useState({
 		profile: {},
 		repository: [],
 	});
 
 	const { uid } = useParams();
+
+	const getUser = async () => {
+		// TODO handle error .then(response => {}) .catch(error => {})
+		const profileResponse = await axios.get(`api/profiles/${uid}`);
+		const repoResponse = await axios.get(`api/profiles/${uid}/repos`);
+		const profile = profileResponse.data;
+		const repos = repoResponse.data;
+
+		setState({ profile: profile, repository: repos });
+	};
+
 	useEffect(() => {
-		const getUser = async () => {
-			const profileResponse = await axios.get(`api/profiles/${uid}`);
-			const repoResponse = await axios.get(`api/profiles/${uid}/repos`);
-			const profile = profileResponse.data;
-			const repos = repoResponse.data;
-
-			setState({ profile: profile, repository: repos });
-		};
 		getUser();
-
+		// Disable the getUser() dependency of useEffect.
 		//eslint-disable-next-line
 	}, []);
 
